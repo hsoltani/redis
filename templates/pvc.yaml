@@ -2,17 +2,17 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "traefik.fullname" . }}
+  name: {{ template "redis.fullname" . }}
   labels:
-    app: {{ template "traefik.fullname" . }}
-    chart: {{ template "traefik.chart" . }}
+    app: {{ template "redis.fullname" . }}
+    chart: {{ template "redis.chart" . }}
     release: {{ .Release.Name | quote }}
     heritage: {{ .Release.Service | quote }}
 spec:
   accessModes:
-    - {{ .Values.persistence.traefik.accessMode | quote }}
+    - {{ .Values.persistence.redis.accessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.persistence.traefik.size | quote }}
-  {{ include "traefik.storageClass" . }}
+      storage: {{ .Values.persistence.redis.size | quote }}
+  {{ include "redis.storageClass" . }}
 {{- end -}}
