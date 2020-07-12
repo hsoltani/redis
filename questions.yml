@@ -13,46 +13,46 @@ questions:
   show_subquestion_if: false
   group: "Container Images"
   subquestions:
-  - variable: traefik.image.repository
-    default: "traefik"
-    description: "traefik image name"
+  - variable: redis.image.repository
+    default: "redis"
+    description: "redis image name"
     type: string
-    label: traefik Image Name
-  - variable: traefik.image.tag
-    default: "2.1.8"
-    description: "2.1.8 image tag"
+    label: redis Image Name
+  - variable: redis.image.tag
+    default: "4.0.10"
+    description: "redis image tag"
     type: string
     label: Image Tag
 
 
-- variable: traefik.service.type
+- variable: redis.service.type
   default: "ClusterIP"
   description: "k8s service type for traefik nodes"
   type: string
   required: true
-  label: traefik service type
-  group: "traefik Settings"
+  label: redis service type
+  group: "redis Settings"
 - variable: persistence.enabled
   default: false
-  description: "Enable persistent volume for traefik"
+  description: "Enable persistent volume for redis"
   type: boolean
   required: true
-  label: traefik Persistent Volume Enabled
+  label: redis Persistent Volume Enabled
   show_subquestion_if: true
-  group: "traefik Settings"
+  group: "redis Settings"
   subquestions:
   - variable: persistence.size
     default: "10Gi"
-    description: "traefik Persistent Volume Size"
+    description: "redis Persistent Volume Size"
     type: string
-    label: traefik Volume Size
+    label: redis Volume Size
   - variable: persistence.storageClass
     default: ""
     description: "If undefined or null, uses the default StorageClass. Default to null"
     type: storageclass
-    label: Default StorageClass for traefik
+    label: Default StorageClass for redis
   - variable: persistence.existingClaim
     default: ""
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
-    label: Existing Persistent Volume Claim for traefik
+    label: Existing Persistent Volume Claim for redis
